@@ -1,22 +1,22 @@
 const assert = require('assert');
 const path = require('path');
 const fs = require('fs');
-const { compile} = require('../services/solidity-compiler')
+const { compile } = require('../services/solidity-compiler')
 
 /**
  * Unit test for the solidity compiler wrapper
  */
 describe("Solidity compiler Wrapper", () => {
-    it('should compile compile correctly', () => {
-        // GIVEN
-        assert.ok(data)
-        
-        // WHEN
-        let output = compile(data)
-        
-        // THEN
-        assert.ok(output)
-    })
+        it('should compile compile correctly', () => {
+                // GIVEN
+                assert.ok(data)
+
+                // WHEN
+                let output = compile(data)
+
+                // THEN
+                assert.ok(output)
+        })
 })
 
 

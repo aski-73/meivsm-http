@@ -67,7 +67,7 @@ successful --> [*]: exit
         // WHEN
         let plantumlFilePath = path.join(__dirname, '..', 'out', `${contractName}.plantuml`)
         let compiledContractPath = await compile(plantumlFilePath, contractName);
-
+		console.log(compiledContractPath)
         // THEN
         assert(fs.existsSync(compiledContractPath) == true);
         assert.equal(fs.readFileSync(compiledContractPath, { encoding: 'utf8' }).trim(), expectedSolFileContent.trim())
@@ -75,7 +75,7 @@ successful --> [*]: exit
 });
 
 const params = {
-    title: "MYProject",
+    title: "MY Project",
     goal: 5,
     unit: "ether",
     endDate: 123454321,
@@ -164,7 +164,9 @@ contract CrowdfundingContract {
 	}
 
 	function transfer(uint amount, address payable receiver) private {
-		if (address(this).balance >= amount)
+		address self = address(this);
+		uint256 balance = self.balance;
+		if (balance >= amount)
 			receiver.transfer(amount);
 	}
 	function returnPayments() private {

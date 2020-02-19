@@ -39,7 +39,7 @@ const compile = async (filePath) => {
     filePath = escapeBlanks(filePath);
 
     // compiler prints path to compiled contract to stdout
-    const { stdout, stderr } = await exec(`/usr/bin/java -jar ${compilerPath} ${filePath}`);
+    const { stdout, stderr } = await exec(`/usr/bin/java -jar ${compilerPath} "${filePath}"`);
     if (stderr) {
         console.log(stderr)
         throw Error(stderr)

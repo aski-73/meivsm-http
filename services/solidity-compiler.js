@@ -23,7 +23,6 @@ const compile = (data) => {
             }
         }
     }
-    console.log(data)
     // output like from truffle compile build/contracts/*.json
     let output = JSON.parse(solc.compile(JSON.stringify(input)))
     for (let contractName in output.contracts['contract.sol']) {

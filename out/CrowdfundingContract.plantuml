@@ -1,0 +1,23 @@
+@startuml CrowdfundingContract
+skinparam Monochrome true
+skinparam Shadowing false
+
+[*] --> created: init
+created: entry/ company: address = 0xD52910c88309A7014078E3795c15753A858aee2A
+created: entry/ endDate: uint = 1567116000
+created: entry/ title: string = "Bad Project"
+created: entry/ goal: uint = 100 ether
+funding: entry/ sum: uint = sum + msg.value
+failed: entry/ returnPayments()
+successful: entry/ transfer(sum + msg.value , company)
+successful: entry/ sum = sum + msg.value
+created --> funding: pay* [now <= endDate & msg.value < goal]
+funding --> funding: pay* [now <= endDate & sum + msg.value < goal]
+created --> successful: pay* [now <= endDate & msg.value >= goal]
+created --> failed: pay* [now > endDate]
+
+funding --> successful: pay* [sum + msg.value >= goal & now <= endDate]
+funding --> failed: pay* [now > endDate]
+failed --> [*]: exit
+successful --> [*]: exit
+@enduml
