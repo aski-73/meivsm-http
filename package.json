@@ -10,7 +10,7 @@
     "debug": "~2.6.9",
     "express": "^4.16.4",
     "http-errors": "^1.6.3",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.1",
     "solc": "^0.6.2"
   },
   "devDependencies": {
